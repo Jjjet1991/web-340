@@ -1,0 +1,54 @@
+<!--
+=====================================================
+; Title: Assignment 2.4 EJS Express
+; Author: Professor Krasso
+; Date 2/ March 2021
+; Modified By: Jourdan Neal
+; Description: EJS with bootstrap styling.
+=====================================================
+*/-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Web 340- Assignment 2.4</title>
+  <!--Bootstrap Link-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <!--Bootstrap nav bar.-->
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightslategray; width:100%;">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <!--Unordered list for Home and Contact links.-->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><b>Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <hr>
+  <!--Horizontal rule to separate nav bar and jumbotron.-->
+  <div class="jumbotron jumbotron-fluid">
+    <!--BootStrap Jumbotron-->
+    <div class="container">
+      <h1 class="display-4"><strong>EJS Views Example</strong></h1>
+      <!--EJS header.-->
+      <p class="lead">
+        <!--Setting Name and address to EJS variables.-->
+        <strong>First Name: </strong> <span><%= firstName %></span><br>
+        <strong>Last Name: </strong> <span><%= lastName %></span><br>
+        <strong>Address: </strong> <span><%= address %></span>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
