@@ -1,3 +1,13 @@
+/*
+=====================================================
+; Title: Assignment 3.2 Logging
+; Author: Professor Krasso
+; Date 2 April 2021
+; Modified By: Jourdan Neal
+; Description: Morgan Logging.
+=====================================================
+*/
+
 //Loading needed libraries.
 var express = require('express');
 var http = require('http');
