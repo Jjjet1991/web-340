@@ -1,0 +1,10 @@
+{
+    "name": "4.3-HTTP-status-codes",
+    "author": "Professor Cross",
+    "private": true,
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "morgan": "^1.10.0"
+    }
+}
