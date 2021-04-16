@@ -1,3 +1,12 @@
+/*
+=====================================================
+; Title: Assignment 5.2 EJS Templates
+; Author: Professor Cross
+; Date 16 April 2021
+; Modified By: Jourdan Neal
+; Description: Creating EJS template page.
+=====================================================
+*/
 //Add require statements.
 var express = require ('express');
 var http = require('http');
