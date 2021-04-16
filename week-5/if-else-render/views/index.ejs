@@ -1,0 +1,70 @@
+<!--/*
+=====================================================
+; Title: Assignment 4.2 Json API
+; Author: Professor Cross
+; Date 9 April 2021
+; Modified By: Jourdan Neal
+; Description: JSON API's.
+=====================================================
+*/-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5.2 - If...Else...Render</title>
+    <!--Link for BootStrap.-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
+    crossorigin="anonymous"/>    
+</head>
+<body>
+    <!--Add navbar-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <li class="nav-item active">
+            <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">Contact Us</a>
+        </li>
+    </nav>
+<!--Create div container-->
+    <div class="container">
+        <br/><br/>
+        <!--h2 heading-->
+
+        <h2>Princesses</h2>
+        <!--Iterate trough the array-->
+        
+         <% for (var k = 0; k < princesses.length; k++) {%>
+            <!--If statement for each princess in the array.-->
+            <% if(princesses[k] == "Belle"){%>
+            <div class=" alert alert-success" role = "alert"><strong><%= princesses[k] %></strong></div>
+            <% } %> <!--End of Belle if statement.-->
+            
+            <% if(princesses[k] == "Ariel"){%>
+            <div class=" alert alert-success" role = "alert"><strong><%= princesses[k] %></strong></div>
+            <% } %> <!--End of Ariel if statement.-->
+
+            <% if(princesses[k] == "Snow White"){%>
+            <div class=" alert alert-success" role = "alert"><strong><%= princesses[k] %></strong></div>
+            <% } %> <!--End of Snow White if statement.-->
+
+            <% if(princesses[k] == "Aurora"){%>
+            <div class=" alert alert-success" role = "alert"><strong><%= princesses[k] %></strong></div>
+            <% } %> <!--End of Aurora if statement.-->
+
+            <% if(princesses[k] == "Cinderella"){%>
+            <div class=" alert alert-success" role = "alert"><strong><%= princesses[k] %></strong></div>
+            <% } %> <!--End of Cinderella if statement.-->
+            
+        <% } %>
+    </div>
+    
+</body>
+</html>
