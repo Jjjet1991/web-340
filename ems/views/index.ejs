@@ -1,0 +1,58 @@
+<!--/*
+=====================================================
+; Title: Employee Management System
+; Author: Professor Cross
+; Date 25 April 2021
+; Modified By: Jourdan Neal
+; Description: Landing Page index for employee management system.
+=====================================================
+*/
+-->
+<body>
+  <!--Creating container to hold page.-->
+  <div role="main" class="container" style="width:auto;">
+  <%- include('header'); -%><!--Import the header-->
+  <%- include('navbar'); -%><!--Import Navbar-->
+<br>
+<!--Container for main page items.-->
+<div class="container">
+  <!--Heading connected to each page.-->
+  <h2 style="text-align: center;">Welcome to the <%= title %>!</h2>
+  <br>
+  <br>
+  <!-------------------------------------------Cards for each option.----------------------------------------->
+  <!--Add new employee option.-->
+  <div class="card" style="width:300px;margin-left:50px;display: inline-block;border-width:.50em;">
+    <div class="card-body">
+      <h5 class="card-title">Add New Employee</h5>
+      <p class="card-text">Add new employee information and create new user.</p>
+      <a href="#" class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Add New Employee</a>
+    </div>
+  </div>
+  <!--Update Employee option.-->
+  <div class="card" style="width:300px;margin-left:50px;display: inline-block;border-width:.50em;">
+    <div class="card-body">
+      <h5 class="card-title">Edit Employee Information</h5>
+      <p class="card-text">Update existing employee information.</p>
+      <a href="#" class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Update Information</a>
+    </div>
+  </div>
+  <!--Settings option.-->
+  <div class="card" style="width:300px;margin-left:50px;display: inline-block;border-width:.50em;">
+    <div class="card-body">
+      <h5 class="card-title">Change Employee Settings</h5>
+      <p class="card-text">Remove users, update password and permissions.</p>
+      <a href="#" class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Settings</a>
+    </div>
+  </div>
+
+ </div><!--close container-->
+ <!--Div for footer information-->
+  <div class="container" style="margin-top:10%;">
+    <%- include('footer'); -%>
+  </div>
+</body>
+
+
+
+
