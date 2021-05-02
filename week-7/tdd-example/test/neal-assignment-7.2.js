@@ -1,3 +1,13 @@
+/*
+=====================================================
+; Title: Assignment 7.2 TDD in Action
+; Author: Professor Cross
+; Date 3 May 2021
+; Modified By: Jourdan Neal
+; Description: Testing using Tdd with Mocha
+=====================================================
+*/
+
 //Add required libraries
 var assert = require("assert");
 
