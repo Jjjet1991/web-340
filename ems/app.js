@@ -13,6 +13,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var logger = require('morgan');
+var helmet = require('helmet');
 
 //Use express app.
 var app = express();
@@ -25,6 +26,7 @@ app.set("view engine", "ejs");
 
 //Use logger.
 app.use(logger("short"));
+app.use(helmet.xssFilter());
 
 //Request/Response function for "/" to Home Page
 app.get("/", function(request,response){
