@@ -8,3 +8,42 @@
 =====================================================
 */
 -->
+<body>
+  <!--Creating container to hold page.-->
+  <div role="main" class="container" style="width:auto;">
+    <%- include('header'); -%><!--Import the header-->
+    <%- include('navbar'); -%><!--Import Navbar-->
+  <br>
+  <!--Container for main page items.-->
+  <div class="container">
+
+  <div class="card" style="width:600px;margin-left:23%;display: inline-block;border-width:.50em;">
+    <div class="card-body">
+      <h2 class="card-title" style="text-align:center">Welcome to the <%= title %>!</h2>
+  
+    <!--Heading connected to each page.-->
+  <div class="card-content">
+    <br/><br/>
+    <div role="main" class="container">
+      <!--Form for Name entry with CSRF token that is hidden. This creates get/post requests-->
+      <form method="post" action="/process">
+          <div class="form-group">
+              <label for="name">Name:</label>
+              <input>       
+          <div class="form-group">
+              <input type="hidden" id="csrf" value="<%= csrfToken %>">
+          </div> 
+          <!--Button to submit new employee name.-->
+          <br>       
+              <button  class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Submit</button>
+          </div>
+      </form>
+  </div>
+</div>
+</div>
+
+<!--Footer-->
+    <div class="container" style="margin-top:10%;">
+        <%- include('footer'); -%>
+      </div>
+    </body>

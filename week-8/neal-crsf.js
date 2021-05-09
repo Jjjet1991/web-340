@@ -44,6 +44,16 @@ app.post("/process", function(request, response) {
     response.redirect("/");
 });
  
+app.get("/list", function(request, response) {
+    Fruit.find({}, function(error, fruits) {
+       if (error) throw error;
+       response.render("list", {
+           title: "Fruit List",
+           fruits: fruits
+       });
+    });
+});
+
 // create and start the Node server
 http.createServer(app).listen(3000, function() {
     console.log("Application started on port 3000!");

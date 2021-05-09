@@ -36,7 +36,7 @@ var logger = require("morgan");
 
 var Employee = require("./models/employee");
 
-var mongoDB = 'mongodb+srv://Jemma:<password>@buwebdev-cluster-2.jpp7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+var mongoDB = 'mongodb+srv://Jemma:<smartwater>@buwebdev-cluster-2.jpp7c.mongodb.net/ems?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });

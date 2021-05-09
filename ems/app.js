@@ -15,8 +15,13 @@ var path = require('path');
 var logger = require('morgan');
 var helmet = require('helmet');
 
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var csrf = require('csurf');
+
 //Use express app.
 var app = express();
+var csrfProtection = csrf({cookie:true});
 
 //Tell express to check "views" folder for additional files.
 app.set("views", path.resolve(__dirname, "views"));
@@ -26,12 +31,53 @@ app.set("view engine", "ejs");
 
 //Use logger.
 app.use(logger("short"));
+
+//Use helmet
 app.use(helmet.xssFilter());
+
+//CSRF protection
+app.use(bodyParser.urlencoded({
+    extended:true
+}));
+
+app.use(cookieParser());
+
+app.use(csrfProtection);
+
+app.use(function(request,response,next){
+    var token = request.csrfToken();
+    response.cookie('XSRF-TOKEN', token);
+    response.locals.csrfToken = token;
+    next();
+})
+
 
 //Request/Response function for "/" to Home Page
 app.get("/", function(request,response){
     response.render("index", {
         title: "Home page"
+    });
+});
+
+//Create new employee page.
+app.get("/new", function(request,response){
+    response.render("new", {
+        title: "New Employee Page"
+    });
+});
+
+app.post("/process", function(request,response){
+    console.log(request.body.txtName);
+    response.redirect("/");
+});
+
+app.get("/list", function(request, response) {
+    Employee.find({}, function(error, fruits) {
+       if (error) throw error;
+       response.render("list", {
+           title: "Employee List",
+           employee : employee
+       });
     });
 });
 
