@@ -8,3 +8,34 @@
 =====================================================
 */
 -->
+
+<body>
+  <!--Creating container to hold page.-->
+  <div role="main" class="container" style="width:auto;">
+    <%- include('header'); -%>
+    <!--Import the header-->
+    <%- include('navbar'); -%>
+    <!--Import Navbar-->
+    <br>
+    <!--Container for main page items.-->
+    <div class="container">
+      <!--Card for name and input box.-->
+      <div class="card" style="width:600px;margin-left:23%;display: inline-block;border-width:.50em;">
+        <div class="card-body">
+          <h2 class="card-title" style="text-align:center">Employee Record</h2>
+          <div class="card-content">
+          <div class="form-group">
+            <label for="txtName">Name:</label>
+            <input type="text" class="form-control" name="txtName">
+          </div>
+          </div>
+        </div>
+        <!--Return button-->
+        <br>
+        <a href="/list">
+          <button class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Return</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>

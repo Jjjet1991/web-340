@@ -25,39 +25,42 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var csrf = require('csurf');
 
-//Required employee info from model in models file.
-var Employee = require("./models/employee");
 
-var csrfProtection = csrf({cookie:true});
+//Required employee info from model in models file.
+var csrfProtection = csrf({cookie: true});
+
+//Import Employee modules from employee.js
+var Employee = require("./models/employee");
 
 //Connect to MongoDB
 var mongoDB = "mongodb+srv://admin:shelby6@cluster0.xtiif.mongodb.net/ems2?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, {
-    useMongoClient: true
 });
+
 //Create promise
 mongoose.Promise = global.Promise;
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongooseDB connection error:'));
 db.once('open', function() {
-    console.log('Application connected');
+console.log('Application connected to MongoDB.');
 });
 
 //CSRF protection
 app.use(bodyParser.urlencoded({
-    extended:true
+extended:true
 }));
 
 app.use(cookieParser());
 
 app.use(csrfProtection);
 
-app.use(function(request,response,next){
-    var token = request.csrfToken();
-    response.cookie('XSRF-TOKEN', token);
-    response.locals.csrfToken = token;
-    next();
-})
+app.use(function(request, response, next) {
+var token = request.csrfToken();
+response.cookie('XSRF-TOKEN', token);
+response.locals.csrfToken = token;
+next();
+});
 
 
 //Tell express to check "views" folder for additional files.
@@ -74,49 +77,78 @@ app.use(helmet.xssFilter());
 
 //Request/Response function for "/" to Home Page
 app.get("/", function(request,response){
-    response.render("index", {
-        title: "Home page"
-    });
+response.render("index", {
+title: "Home page"
+  });
 });
 
 //Create new employee page.
 app.get("/new", function(request,response){
-    response.render("new", {
-        title: "New Employee Page"
-    });
-});
-
-app.post("/process", function(request, response) {
-    // console.log(request.body.txtName);
-    if (!request.body.firstNameTxt) {
-        response.status(400).send("Entries must have a name");
-        return;
-    }
-    // get the request's form data
-    var firstName = request.firstNameTxt;
-    //console.log(firstName);
-    // create a fruit model
-    var firstName = new Employee({
-        firstName: firstName
-    });
-    // save
-    firstName.save(function (error) {
-        if (error) throw error;
-        console.log(firstName + " saved successfully!");
-    });
-    response.redirect("/");
+response.render("new", {
+title: "New Employee Page"
  });
-
- app.get("/list", function(request, response) {
-    Employee.find({}, function(error, fruits) {
-       if (error) throw error;
-       response.render("list", {
-           title: "Employee List",
-           employee: employee
-       });
-    });
 });
+//Process page -- must have a first and last name entry.
+app.post("/process", function(request, response) {
+
+if (!request.body.firstName) {
+response.status(400).send("You must enter a first name.");
+return;
+}
+
+if (!request.body.lastName) {
+response.status(400).send("You must enter a last name.");
+return;
+}
+
+var firstName = request.body.firstName;
+var lastName = request.body.lastName;
+
+var employee = new Employee({
+firstName: firstName,
+lastName: lastName
+});
+
+employee.save(function (error) {
+if (error) throw error;
+console.log(firstName + " " + lastName + " your entry is saved!")
+});
+response.redirect("/");
+});
+
+//List page showing employee first and last name.
+app.get("/list", function(request, response) {
+Employee.find({}, function(error, employees) {
+if (error) throw error;
+response.render("list", {
+title: "Employee List",
+employees: employees
+    });
+  });
+});
+
+//View query 
+app.get("/view/:queryName", function(request,response){
+var queryName = request.params['queryName'];
+Employee.find({'firstName':queryName}, function(error, employees) {
+
+if (error) throw error;
+console.log(employees);
+
+if(employees.length> 0){
+response.render("view", {
+
+title: "Employee Record",
+employee: employees
+  });
+}
+else {
+response.redirect("/list") 
+    }  
+  });
+});
+
 //Create server, listening on port 8080. Log comment to verify that application is running on port.
 http.createServer(app).listen(8080, function(){
-    console.log("Application started and listening on port 8080!")
+console.log("Application started and listening on port 8080!")
 });
