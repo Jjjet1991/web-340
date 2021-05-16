@@ -24,16 +24,22 @@
         <div class="card-body">
           <h2 class="card-title" style="text-align:center">Employee Record</h2>
           <div class="card-content">
+            <!--Form to show first and last name of selected employee.-->
           <div class="form-group">
             <label for="txtName">Name:</label>
-            <input type="text" class="form-control" name="txtName">
+            <input type="text" class="form-control" name="txtName" value="<%= employee[0].firstName %>">
+          </div>
+          <div class="form-group">
+            <label for="txtName">Name:</label>
+            <input type="text" class="form-control" name="txtName" value="<%= employee[0].lastName %>">
           </div>
           </div>
         </div>
         <!--Return button-->
         <br>
+        <!--Return to list link.-->
         <a href="/list">
-          <button class="btn btn-primary" style="background-color:#02475e;border: #02475e;">Return</button>
+          <button class="btn btn-primary" style="background-color:#02475e;border: #02475e; margin:15px;">Return</button>
         </a>
       </div>
     </div>
