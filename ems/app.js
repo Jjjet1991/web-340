@@ -148,7 +148,11 @@ response.redirect("/list")
   });
 });
 
+//Modify applications port
+app.set("port", process.env.PORT || 8080);
+
 //Create server, listening on port 8080. Log comment to verify that application is running on port.
-http.createServer(app).listen(8080, function(){
+http.createServer(app).listen(app.get("port"), function(){
 console.log("Application started and listening on port 8080!")
 });
+
